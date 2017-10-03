@@ -16,9 +16,9 @@ class DefaultController extends Controller
     public function indexAction(Request $request)
     {
         $client = new Client();
-        $client->setName('test');
-        $client->setKey(strtoupper(substr(uniqid(), 0, 12)));
-        $client->setApiVersion('1.0');
+        $client->setName('test')
+            ->setKey(strtoupper(substr(uniqid(), 0, 12)))
+            ->setApiVersion('1.0');
 
         $em = $this->getDoctrine()->getManager();
         $em->persist($client);

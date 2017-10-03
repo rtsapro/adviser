@@ -5,13 +5,13 @@ namespace AppBundle\Entity;
 use \Doctrine\ORM\Mapping as ORM;
 
 /**
- * Class Client
+ * Class Package
  * @package AppBundle\Entity
- * @ORM\Entity(repositoryClass="AppBundle\Repository\ClientRepository")
- * @ORM\Table(name="client")
+ * @ORM\Entity
+ * @ORM\Table(name="package")
  * @ORM\HasLifecycleCallbacks
  */
-class Client
+class Package
 {
     /**
      * @ORM\Id
@@ -26,14 +26,9 @@ class Client
     private $name;
 
     /**
-     * @ORM\Column(type="string", length=12, name="`key`", unique=true)
+     * @ORM\Column(type="text")
      */
-    private $key;
-
-    /**
-     * @ORM\Column(type="string", length=5)
-     */
-    private $apiVersion;
+    private $description;
 
     /**
      * @ORM\Column(type="datetime")
@@ -41,7 +36,7 @@ class Client
     private $createdAt;
 
     /**
-     * @ORM\Column(type="datetime", nullable=true)
+     * @ORM\Column(type="datetime")
      */
     private $modifiedIn;
 
@@ -74,41 +69,23 @@ class Client
     /**
      * @return string
      */
-    public function getKey()
+    public function getDescription()
     {
-        return $this->key;
+        return $this->description;
     }
 
     /**
-     * @param string $key
+     * @param string $description
      * @return $this
      */
-    public function setKey($key)
+    public function setDescription($description)
     {
-        $this->key = $key;
+        $this->description = $description;
         return $this;
     }
 
     /**
-     * @return string
-     */
-    public function getApiVersion()
-    {
-        return $this->apiVersion;
-    }
-
-    /**
-     * @param string $apiVersion
-     * @return $this
-     */
-    public function setApiVersion($apiVersion)
-    {
-        $this->apiVersion = $apiVersion;
-        return $this;
-    }
-
-    /**
-     * @return string
+     * @return mixed
      */
     public function getCreatedAt()
     {
@@ -126,7 +103,7 @@ class Client
     }
 
     /**
-     * @return string
+     * @return mixed
      */
     public function getModifiedIn()
     {
